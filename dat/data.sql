@@ -1,4 +1,4 @@
-DROP SCHEMA wisdom cascade;
+DROP SCHEMA IF EXISTS wisdom cascade;
 CREATE SCHEMA wisdom;
 CREATE TABLE wisdom.services (
                           service_id UUID PRIMARY KEY,

@@ -61,5 +61,11 @@ public class App {
 
         System.out.println("\n\n*** LIMIT ***");
         dao.getAllLimit(2).forEach(System.out::println);;
+
+        System.out.println("\n\n*** PAGED ***");
+        for(int i=1; i<11;i++){
+            System.out.println("Page number: " + i);
+            customerDao.getAllPaged(i, 10).forEach(System.out::println);
+        }
     }
 }
