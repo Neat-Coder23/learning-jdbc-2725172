@@ -1,3 +1,4 @@
+DROP SCHEMA wisdom cascade;
 CREATE SCHEMA wisdom;
 CREATE TABLE wisdom.services (
                           service_id UUID PRIMARY KEY,
@@ -170,3 +171,25 @@ INSERT INTO wisdom.customers (customer_id, first_name, last_name, email, phone, 
 INSERT INTO wisdom.customers (customer_id, first_name, last_name, email, phone, address) VALUES(gen_random_uuid(),'Nicole','Mcconnell','enim.Mauris.quis@Vivamusnibh.net','(892) 616-0264','8 Delaware Hill, Garden Grove, CA 92844');
 INSERT INTO wisdom.customers (customer_id, first_name, last_name, email, phone, address) VALUES(gen_random_uuid(),'Kamal','Newton','turpis@loremvehicula.com','(704) 685-9968','718 Lakewood Parkway, Appleton, WI 54915');
 INSERT INTO wisdom.customers (customer_id, first_name, last_name, email, phone, address) VALUES(gen_random_uuid(),'Quentin','Marshall','velit@Pellentesquehabitantmorbi.org','(203) 755-9348','100 Bunting Drive, Washington, DC 20557');
+
+
+CREATE OR REPLACE FUNCTION createproduct(
+  product_name VARCHAR, 
+  product_price NUMERIC, 
+  vendor_name VARCHAR) RETURNS UUID
+LANGUAGE plpgsql
+AS $BODY$
+DECLARE
+  prod_id UUID;
+BEGIN
+  prod_id := gen_random_uuid();
+  INSERT INTO wisdom.products (product_id, name, price, vendor_id)
+  values(
+    prod_id, 
+    product_name, 
+    product_price, 
+    (select vendor_id from wisdom.vendors where UPPER(name) = UPPER(vendor_name))
+  );
+  return prod_id;
+END;
+$BODY$;
