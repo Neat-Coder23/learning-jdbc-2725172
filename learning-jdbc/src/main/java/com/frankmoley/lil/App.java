@@ -59,5 +59,8 @@ public class App {
         SimpleProductDao spdao = new SimpleProductDao();
         UUID productId = spdao.createProduct("foobarbaz" + System.currentTimeMillis(), new BigDecimal(45.67), "Jaloo");
         System.out.println(productId);
+
+        System.out.println("\n\n*** LIMIT ***");
+        serviceDao.getAllLimit(2).forEach(System.out::println);
     }
 }
