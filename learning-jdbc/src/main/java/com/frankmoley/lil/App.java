@@ -24,5 +24,8 @@ public class App {
         newService.setPrice(new BigDecimal(4.35));
         newService = serviceDao.create(newService);
         System.out.println("\n*** CREATE ***\n" + newService);
+        newService.setPrice(new BigDecimal(13.45));
+        newService = serviceDao.update(newService);
+        System.out.println("\n*** UPDATE ***\n" + newService);
     }
 }
