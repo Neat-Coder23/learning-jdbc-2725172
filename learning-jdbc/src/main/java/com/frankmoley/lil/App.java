@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+import com.frankmoley.lil.data.dao.CustomerDao;
 import com.frankmoley.lil.data.dao.ServiceDao;
+import com.frankmoley.lil.data.entity.Customer;
 import com.frankmoley.lil.data.entity.Service;
 
 /**
@@ -30,5 +32,25 @@ public class App {
         serviceDao.delete(newService.getServiceId());
         System.out.println("\n*** DELETE ***\n");
         
+        System.out.println("\n\n******* CUSTOMERS *******");
+        CustomerDao customerDao = new CustomerDao();
+        List<Customer> customers = customerDao.getAll();        
+        System.out.println("*** GET ALL ***");
+        customers.forEach(System.out::println);
+        Optional<Customer> customer = customerDao.getOne(customers.get(0).getCustomerId());
+        System.out.println("\n*** GET ONE ***\n" + customer.get());
+        Customer newCustomer = new Customer();
+        newCustomer.setFirstName("Ron");
+        newCustomer.setLastName("Swanson");
+        newCustomer.setEmail("ronswanson@example.com");
+        newCustomer.setPhone("515.555.1235");
+        newCustomer.setAddress("1234 Main St Anytown, KS 66400");
+        newCustomer = customerDao.create(newCustomer);
+        System.out.println("\n*** CREATE ***\n" + newCustomer);
+        newCustomer.setEmail("rswanson@freedom.com");
+        newCustomer = customerDao.update(newCustomer);
+        System.out.println("\n*** UPDATE ***\n" + newCustomer);
+        customerDao.delete(newCustomer.getCustomerId());
+        System.out.println("\n*** DELETE ***\n");
     }
 }
