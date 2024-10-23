@@ -1,6 +1,12 @@
 # Learning JDBC
 This is the repository for the LinkedIn Learning course `Learning JDBC`. The full course is available from [LinkedIn Learning][lil-course-url]. 
 
+![lil-thumbnail-url]
+
+## Course Description
+
+Whether developers want to build mobile device apps for Android, web-based, or desktop-based applications with the core Java SDK from Oracle, they must contend with the fact that many dynamic applications need to integrate data from a relational database. In this course, Frank Moley helps you get up to speed with the Java Database Connectivity (JDBC) API, showing how to use it to read and manage data from relational databases such as Postgres, Oracle Database, MySQL, and SQL Server in applications programmed with Java. Frank begins by going over key JDBC terminology, the basics of configuring a PostgreSQL database, and how to create the course project. He then provides detailed instructions on how to select and update data, work with transactions, handle exceptions, and more.
+
 _See the readme file in the main branch for updated instructions and information._
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
